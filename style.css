@@ -1,0 +1,76 @@
+.email1,h1{
+
+    text-align:center;
+}
+
+.login{
+
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-size: medium;
+   display:flex;
+   flex-direction:column;
+   font-weight:bolder;
+}
+
+
+
+button[type=submit]
+{ 
+    width: 25%;
+    padding: 10px;
+
+}
+.img
+{
+    width: 15%;
+    height: 25%;
+    padding: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 50%;
+
+}
+
+
+input[type=text],input[type=password],input[type=email],input[type=tel],.email
+{
+
+    width: 25%;
+    padding:10px;
+    font-size:large;
+    margin-left: 40%;   
+    
+}
+.reg
+{
+    text-align: center;
+}
+
+.submit-button{
+    font-size: large;
+    background-color: green;
+    
+}
+
+.login{
+
+    background-color:blanchedalmond ;
+}
+
+.notes{
+    display: flow-root;
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 300px;
+    margin-bottom: 20px;
+}
+.Homepage{
+    padding: 20px;
+    display: flow-root;
+}
+
+
+ 
