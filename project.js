@@ -67,7 +67,7 @@ class User{
 
 
 let Login= document.getElementById("LoginForm");
-if(Login) Login.addEventListener('',acclogin)
+if(Login) Login.addEventListener('submit',acclogin)
 
 function acclogin(l){
  l.preventDefault();
@@ -93,14 +93,14 @@ function acccr(c){
     let pass=document.getElementById("password").value;
     let preset=document.getElementById("RePassword").value;
     let Num=document.getElementById("MN").value;
-   let Ruser= new User(Firstuser,Luser,eml,pass,preset,Num,PNote);
+    let Ruser= new User(Firstuser,Luser,eml,pass,preset,Num);
     console.log(`${Firstuser}`);
     console.log(`${Luser}`);
     console.log(`${eml}`);
     console.log(`${pass}`);
     console.log(`${preset}`);
     console.log(`${Num}`);
-   
+     
     Register.reset();
     
 }
