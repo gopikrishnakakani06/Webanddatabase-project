@@ -50,9 +50,9 @@ input[type=text],input[type=password],input[type=email],input[type=tel],.email
 }
 
 .submit-button{
-    font-size: large;
+    font-size:large;
     background-color: green;
-    
+   margin-left: 30%;    
 }
 
 .login{
