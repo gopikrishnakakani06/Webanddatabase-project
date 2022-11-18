@@ -1,1 +1,2 @@
-![alt text](https://lucid.app/lucidchart/1b842b63-e624-41d6-a020-7c51947a5ed6/edit?page=0_0&invitationId=inv_53ac8c05-2eac-4008-8b42-062bec7c74af#)
+
+![alt text]
