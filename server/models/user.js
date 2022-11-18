@@ -1,22 +1,22 @@
 const users=[
     {
-        Email: "gopikrishnakakani06@gmail.com",
-        Password: "kgk7897"
+        email: "gopikrishnakakani06@gmail.com",
+        password: "kgk7897"
     },
 
     {
-        Email: "gopi@gmail.com",
-        Password: "gopi78"
+        email: "gopi@gmail.com",
+        password: "gopi78"
 
     },
     {
-        Email: "Krishna@gmail.com",
-        Password: "Krishna"
+        email: "Krishna@gmail.com",
+        password: "Krishna"
 
     },
     {
-        Email: "Kakani@gmail.com",
-        Password:"Kakani"
+        email: "Kakani@gmail.com",
+        password:"Kakani"
     }
 
 
@@ -27,10 +27,10 @@ function getAllUsers() {
   }
   
   function login(user) { // {userName: "sda", password: "gsdhjsga"}
-    let cUser = users.filter( u => u.Email === user.Email);
+    let cUser = users.filter( u => u.email === user.email);
     
     if(!cUser[0]) throw Error("Email not found");
-    if(cUser[0].Password !== user.Password) throw Error("Password incorrect");
+    if(cUser[0].password !== user.password) throw Error("Password incorrect");
   
     return cUser[0];
   }
