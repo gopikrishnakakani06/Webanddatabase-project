@@ -1,15 +1,14 @@
 class User{
 
 
-    constructor(FName,LName,Email,pwd,ReEnterPwd,MobileNumber,Note){
+    constructor(FName,LName,Email,pwd,ReEnterPwd,MobileNumber){
 
         this.FirstName=FName;
         this.LastName=LName;
         this.email=Email;
         this.password=pwd;
         this.RePassword=ReEnterPwd;
-        this.MN=MobileNumber;
-        this.Notes=Note;
+        this.MN=MobileNumber;  
     }
 
     getFirstName(){
@@ -37,10 +36,7 @@ class User{
         return this.MN;
 
     }
-    getNotes(){
-        return this.Notes;
-    }
-
+    
     setFirstName(FName){
         this.FirstName=FName;
     }
@@ -60,8 +56,21 @@ class User{
     setMN(MobileNumber){
         this.MN=MobileNumber;
     }
+   
+}
+
+class UNote{
+    constructor(Note)
+    {
+        this.Notes=Note;
+    }
+
     setNotes(Note){
         this.Notes=Note;
+    }
+
+    getNotes(){
+        return this.Notes;
     }
 }
 
@@ -111,7 +120,7 @@ if(UsrNote) UsrNote.addEventListener('submit',PNote)
 function PNote(p){
     p.preventDefault();
     let Notep= document.getElementById("Notes").value;
-    let Nuser= new User(Notep);
+    let Nuser= new UNote(Notep);
     console.log(`${Notep}`);
 
     UsrNote.reset();
