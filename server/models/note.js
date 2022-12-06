@@ -6,7 +6,7 @@ async function createTable() {
     noteID INT NOT NULL AUTO_INCREMENT,
     Notesdata VARCHAR(255) NOT NULL,
     userID INT NOT NULL,
-    CONSTRAINT note_pl PRIMARY KEY(noteID),
+    CONSTRAINT note_pk PRIMARY KEY(noteID),
     CONSTRAINT note_fk FOREIGN KEY(userID) REFERENCES users(userID)
    
   ); `
