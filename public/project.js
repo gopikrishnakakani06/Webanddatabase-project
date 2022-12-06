@@ -172,10 +172,11 @@ function PNote(p){
     UsrNote.reset();
 }
 
-
+/*
 function setCurrentUser(user){
     localStorage.setItem('user',JSON.stringify(user))
 }
+*/
 
 
 
