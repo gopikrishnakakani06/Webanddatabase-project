@@ -35,7 +35,7 @@ button[type=submit]
 }
 
 
-input[type=text],input[type=password],input[type=email],input[type=tel],.email
+input[type=text],input[type=password],input[type=email],.email,input[type=tel]
 {
 
     width: 25%;
@@ -71,6 +71,5 @@ input[type=text],input[type=password],input[type=email],input[type=tel],.email
     padding: 20px;
     display: flow-root;
 }
-
 
  

@@ -1,45 +1,16 @@
+import {fetchData, setCurrentUser ,getCurrentUser} from './project.js'
+// const { getCurrentUser } = require("./project");
 
-// getUsers button 
-// document.getElementById("btn-users").addEventListener('click', getUsers);
-
-// function getUsers() {
- //  fetch("http://localhost:3000/users/")
- // .then((res)=> res.json())
- // .then((data) => console.log(data))
-  //.catch((err)=> console.log(err))
-//}
-
-// Fetch method implementation:
-async function fetchData(route = '', data = {}, methodType) {
-    const response = await fetch(`http://localhost:3000${route}`, {
-      method: methodType, // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data) // body data type must match "Content-Type" header
-    });
-    if(response.ok) {
-      return await response.json(); // parses JSON response into native JavaScript objects
-    } else {
-      throw await response.json();
-    }
-  }
-  
 class User{
 
 
-    constructor(FName,LName,Email,pwd,ReEnterPwd,MobileNumber){
+    constructor(FName,LName,Email,pwd,MobileNumber){
 
         this.FirstName=FName;
         this.LastName=LName;
         this.email=Email;
         this.password=pwd;
-        this.RePassword=ReEnterPwd;
+       // this.RePassword=ReEnterPwd;
         this.MN=MobileNumber;  
     }
 
@@ -59,11 +30,11 @@ class User{
         return this.password;
 
     }
-    getRePassword()
-    {
-        return this.RePassword;
+    //getRePassword()
+   // {
+    //    return this.RePassword;
 
-    }
+    //}
     getMN(){
         return this.MN;
 
@@ -82,9 +53,9 @@ class User{
     setpassword(pwd){
         this.password=pwd;
     }
-    setRePassword(ReEnterPwd){
-        this.RePassword=ReEnterPwd;
-    }
+    //setRePassword(ReEnterPwd){
+    //    this.RePassword=ReEnterPwd;
+    //}
     setMN(MobileNumber){
         this.MN=MobileNumber;
     }
@@ -94,15 +65,15 @@ class User{
 class UNote{
     constructor(Note)
     {
-        this.Notes=Note;
+        this.Notesdata=Note;
     }
 
     setNotes(Note){
-        this.Notes=Note;
+        this.NNotesdataotes=Note;
     }
 
     getNotes(){
-        return this.Notes;
+        return this.Notesdata;
     }
 }
 
@@ -118,7 +89,8 @@ function acclogin(l){
  const logindata=new User(null,null,eml,pass,null);
  fetchData("/users/login", logindata,"POST")
  .then((data) => {
-    console.log(data);
+    setCurrentUser(data)
+     console.log(data);
     window.location.href = "Note.html";
   })
   .catch((err) => {
@@ -144,21 +116,31 @@ function acccr(c){
     let Luser=document.getElementById("LastName").value;
     let eml=document.getElementById("email").value;
     let pass=document.getElementById("password").value;
-    let preset=document.getElementById("RePassword").value;
+   // let preset=document.getElementById("RePassword").value;
     let Num=document.getElementById("MN").value;
-    let Ruser= new User(Firstuser,Luser,eml,pass,preset,Num);
+    let Ruser= new User(Firstuser,Luser,eml,pass,Num);
+ fetchData("/users/register", Ruser, "POST")
+  .then((data) => {
+    setCurrentUser(data);
+    alert("Registration success")
+    window.location.href = "Note.html";
+  })
+  .catch((err) =>{
+   alert("Registration not success")
+   Register.reset();
+    let p = document.querySelector('.error');
+    p.innerHTML = err.message;
+  })
+}
+/*
     console.log(`${Firstuser}`);
     console.log(`${Luser}`);
     console.log(`${eml}`);
     console.log(`${pass}`);
     console.log(`${preset}`);
     console.log(`${Num}`);
-     
-    Register.reset();
-
-
-    
-}
+     */
+let user=getCurrentUser()   
 
 let UsrNote= document.getElementById("NoteForm");
 if(UsrNote) UsrNote.addEventListener('submit',PNote)
@@ -167,22 +149,31 @@ function PNote(p){
     p.preventDefault();
     let Notep= document.getElementById("Notes").value;
     let Nuser= new UNote(Notep);
+    Nuser.userID=user.userID;
+    fetchData("/Notedata/createNote",Nuser, "POST")
+    .then((data) => {
+        alert("Notes added");
+      window.location.href = "Note.html";
+    })
+    .catch((err) => {
+     console.log(`Error!!! ${err.message}`)
+     alert("Error in adding notes");
+    })
     console.log(`${Notep}`);
 
-    UsrNote.reset();
+   //  UsrNote.reset();
 }
 
-/*
-function setCurrentUser(user){
-    localStorage.setItem('user',JSON.stringify(user))
+if(user&&UsrNote) getallnotes();
+
+function getallnotes(){
+    let Notep= document.getElementById("Notes");
+    fetchData("/Notedata/getNote",user,"POST")
+    .then((data) => {
+ console.log(data);
+ for(let i=0;i<data.length;i++){
+ Notep.value='\n'+data[i].Notesdata
+ }
+
+    })
 }
-*/
-
-
-
-
-
-
-
-
-

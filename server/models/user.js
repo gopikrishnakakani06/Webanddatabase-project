@@ -63,6 +63,7 @@ getAllUsers();
 // Create  User - Registering
 async function register(user) {
   let cUser = await getUser(user);
+  //console.log(user)
   if(cUser.length > 0) throw Error("Username already in use");
 
   const sql = `INSERT INTO users (FirstName,LastName,email,password,MN)
@@ -79,7 +80,7 @@ async function login(user) { // {userName: "sda", password: "gsdhjsga"}
   let cUser = await getUser(user); //[{userName: "cathy123", password: "icecream"}]
   if(!cUser[0]) throw Error("email not found");
   if(cUser[0].password !== user.password) throw Error("Password incorrect");
-  console.log(cUser[0]);
+  //console.log(cUser[0]);
   return cUser[0];
 }
 

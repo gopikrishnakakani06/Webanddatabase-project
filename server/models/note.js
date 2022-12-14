@@ -21,10 +21,10 @@ async function getallnotes() {
 getallnotes();
 
 async function createNote(note){
-
+  
   let sql=`INSERT INTO Notedata (userID,Notesdata) VALUES ("${note.userID}", "${note.Notesdata}");`
 
-await con.query(sql);
+ await con.query(sql);
 return {message:"Successfully added notes"};
 
 }
